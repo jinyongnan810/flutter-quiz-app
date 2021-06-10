@@ -8,8 +8,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'QuizApp',
-      home: Text('Quiz App'),
-    );
+        title: 'QuizApp',
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('Quiz App'),
+          ),
+          body: Text('Content of Quiz App'),
+        ));
   }
 }
