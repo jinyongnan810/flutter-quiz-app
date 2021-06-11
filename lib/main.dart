@@ -13,7 +13,14 @@ class QA {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
   List<QA> qas = [
     QA('Q1', ['A1-1', 'A1-2']),
     QA('Q2', ['A2-1', 'A2-2', 'A2-3']),
@@ -25,7 +32,9 @@ class MyApp extends StatelessWidget {
     if (questionIndex == qas.length - 1) {
       return;
     }
-    questionIndex++;
+    setState(() {
+      questionIndex++;
+    });
   }
 
   @override
