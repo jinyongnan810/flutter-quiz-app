@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
           ),
           body: Column(
             children: [
-              Text(_qas[_questionIndex].question),
+              Question(_qas[_questionIndex].question),
               ..._qas[_questionIndex].answers.map((e) {
                 return ElevatedButton(
                   child: Text(e),
