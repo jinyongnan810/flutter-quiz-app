@@ -18,7 +18,6 @@ class Answer extends StatelessWidget {
           style: TextStyle(fontSize: 24),
         ),
         onPressed: _onPressed,
-        style: ButtonStyle(),
       ),
     );
   }

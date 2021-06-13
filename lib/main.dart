@@ -43,6 +43,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'QuizApp',
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+        ),
         home: Scaffold(
           appBar: AppBar(
             title: Text('Quiz App'),
