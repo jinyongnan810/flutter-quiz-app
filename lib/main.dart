@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
+import './result.dart';
+import './types.dart';
 
 void main() {
   runApp(MyApp());
-}
-
-class QA {
-  String question = '';
-  List<String> answers = [];
-  QA(String question, List<String> answers) {
-    this.question = question;
-    this.answers = answers;
-  }
 }
 
 class MyApp extends StatefulWidget {
@@ -48,15 +40,11 @@ class _MyAppState extends State<MyApp> {
             title: Text('Quiz App'),
           ),
           body: _questionIndex < _qas.length
-              ? Column(
-                  children: [
-                    Question(_qas[_questionIndex].question),
-                    ..._qas[_questionIndex].answers.map((e) {
-                      return Answer(e, _onAnswerSelected);
-                    })
-                  ],
-                )
-              : Center(child: Text('Thank you for answering!')),
+              ? Quiz(
+                  qas: _qas,
+                  questionIndex: _questionIndex,
+                  onAnswerSelected: _onAnswerSelected)
+              : Result(text: 'Thank you for answering!'),
         ));
   }
 }
