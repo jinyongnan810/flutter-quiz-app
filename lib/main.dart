@@ -31,9 +31,6 @@ class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
   void _onAnswerSelected() {
     print('questionIndex:$_questionIndex');
-    if (_questionIndex == _qas.length - 1) {
-      return;
-    }
     setState(() {
       _questionIndex++;
     });
@@ -50,14 +47,16 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: Text('Quiz App'),
           ),
-          body: Column(
-            children: [
-              Question(_qas[_questionIndex].question),
-              ..._qas[_questionIndex].answers.map((e) {
-                return Answer(e, _onAnswerSelected);
-              })
-            ],
-          ),
+          body: _questionIndex < _qas.length
+              ? Column(
+                  children: [
+                    Question(_qas[_questionIndex].question),
+                    ..._qas[_questionIndex].answers.map((e) {
+                      return Answer(e, _onAnswerSelected);
+                    })
+                  ],
+                )
+              : Center(child: Text('Thank you for answering!')),
         ));
   }
 }
