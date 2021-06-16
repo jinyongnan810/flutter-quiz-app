@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  String text;
-  Result({required this.text});
+  int totalScore;
+  Result({required this.totalScore});
+  String get scorePhrase {
+    return 'Your score is:$totalScore';
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(this.text));
+    return Center(child: Text(scorePhrase));
   }
 }

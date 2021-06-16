@@ -16,13 +16,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<QA> _qas = [
-    QA('Q1', ['A1-1', 'A1-2']),
-    QA('Q2', ['A2-1', 'A2-2', 'A2-3']),
-    QA('Q3', ['A3-1', 'A3-2', 'A3-3']),
+    QA('Q1', [QuizAnswer('A1-1', 1), QuizAnswer('A1-2', 2)]),
+    QA('Q2',
+        [QuizAnswer('A2-1', 1), QuizAnswer('A2-2', 2), QuizAnswer('A2-3', 3)]),
+    QA('Q3',
+        [QuizAnswer('A3-1', 1), QuizAnswer('A3-2', 2), QuizAnswer('A3-3', 3)]),
   ];
   int _questionIndex = 0;
-  void _onAnswerSelected() {
+  int _totalScore = 0;
+  void _onAnswerSelected(int score) {
     print('questionIndex:$_questionIndex');
+    _totalScore += score;
     setState(() {
       _questionIndex++;
     });
@@ -44,7 +48,7 @@ class _MyAppState extends State<MyApp> {
                   qas: _qas,
                   questionIndex: _questionIndex,
                   onAnswerSelected: _onAnswerSelected)
-              : Result(text: 'Thank you for answering!'),
+              : Result(totalScore: _totalScore),
         ));
   }
 }

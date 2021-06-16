@@ -6,7 +6,8 @@ import './types.dart';
 class Quiz extends StatelessWidget {
   List<QA> qas;
   int questionIndex;
-  VoidCallback onAnswerSelected;
+  void Function(int)
+      onAnswerSelected; // specific function type instead of VoidCallback
   Quiz(
       {required this.qas,
       required this.questionIndex,
@@ -18,7 +19,7 @@ class Quiz extends StatelessWidget {
       children: [
         Question(qas[questionIndex].question),
         ...qas[questionIndex].answers.map((e) {
-          return Answer(e, onAnswerSelected);
+          return Answer(e.text, () => onAnswerSelected(e.score));
         })
       ],
     );
